@@ -234,7 +234,7 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("who directed %"), director_by_title),
     (str.split("who was the director of %"), director_by_title),
     (str.split("what movies were directed by %"), title_by_director),
-    (str.split("what was directed by _"), title_by_director),
+    (str.split("what was directed by %"), title_by_director),
     (str.split("who acted in %"), actors_by_title),
     (str.split("when was % made"), year_by_title),
     (str.split("what year was % made"), year_by_title),
