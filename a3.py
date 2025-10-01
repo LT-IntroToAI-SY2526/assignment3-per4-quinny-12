@@ -212,6 +212,17 @@ def title_by_actor(matches: List[str]) -> List[str]:
                 result.append(get_title(movie))
     return result
 
+def actors_by_director(matches: List[str]) -> List[str]:
+    """Finds actors who acted in movies directed by the passed director
+    """
+    result = []
+    search_director = matches[0].lower()
+    for movie in movie_db:
+        if get_director(movie) == search_director:
+            for actor in get_actors(movie):
+                result.append(actor)
+    return result
+
 
 # dummy argument is ignored and doesn't matter
 def bye_action(dummy: List[str]) -> None:
@@ -236,9 +247,11 @@ pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("what movies were directed by %"), title_by_director),
     (str.split("what was directed by %"), title_by_director),
     (str.split("who acted in %"), actors_by_title),
+    (str.split("who was in %"), actors_by_title),
     (str.split("when was % made"), year_by_title),
     (str.split("what year was % made"), year_by_title),
     (str.split("in what movies did % appear"), title_by_actor),
+    (str.split("who acted in movies directed by %"), actors_by_director),
     (["bye"], bye_action),
 ]
 
