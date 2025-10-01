@@ -222,16 +222,22 @@ def bye_action(dummy: List[str]) -> None:
 # pattern and action It must be declared here, after all of the function definitions
 pa_list: List[Tuple[List[str], Callable[[List[str]], List[Any]]]] = [
     (str.split("what movies were made in _"), title_by_year),
+    (str.split("what was made in _"), title_by_year),
     (str.split("what movies were made between _ and _"), title_by_year_range),
+    (str.split("what was made between _ and _"), title_by_year_range),
     (str.split("what movies were made before _"), title_before_year),
+    (str.split("what was made before _"), title_before_year),
     (str.split("what movies were made after _"), title_after_year),
+    (str.split("what was made after _"), title_after_year),
     # note there are two valid patterns here two different ways to ask for the director
     # of a movie
     (str.split("who directed %"), director_by_title),
     (str.split("who was the director of %"), director_by_title),
     (str.split("what movies were directed by %"), title_by_director),
+    (str.split("what was directed by _"), title_by_director),
     (str.split("who acted in %"), actors_by_title),
     (str.split("when was % made"), year_by_title),
+    (str.split("what year was % made"), year_by_title),
     (str.split("in what movies did % appear"), title_by_actor),
     (["bye"], bye_action),
 ]
@@ -298,7 +304,7 @@ def query_loop() -> None:
 # uncomment the following line once you've written all of your code and are ready to try
 # it out. Before running the following line, you should make sure that your code passes
 # the existing asserts.
-# query_loop()
+query_loop()
 
 if __name__ == "__main__":
     assert isinstance(title_by_year(["1974"]), list), "title_by_year not returning a list"
