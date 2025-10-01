@@ -57,7 +57,7 @@ def title_by_year(matches: List[str]) -> List[str]:
     year = int(matches[0])
     result = []
     for movie in movie_db:
-        if get_year(movie) == year:
+        if int(get_year(movie)) == year:
             result.append(get_title(movie))
     return result
 
@@ -80,7 +80,7 @@ def title_by_year_range(matches: List[str]) -> List[str]:
 
     result = []
     for movie in movie_db:
-        if start_year <= get_year(movie) <= end_year:
+        if int(start_year) <= int(get_year(movie)) <= int(end_year):
             result.append(get_title(movie))
     
     return result
@@ -176,7 +176,7 @@ def actors_by_title(matches: List[str]) -> List[str]:
     search_title = matches[0].lower()
     for movie in movie_db:
         if get_title(movie) == search_title:
-            return [get_actors(movie)]
+            return get_actors(movie)
     return []
 
 def year_by_title(matches: List[str]) -> List[int]:
